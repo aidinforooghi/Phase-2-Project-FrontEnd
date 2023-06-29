@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader } from '@mantine/core'
+import { Loader, Container } from '@mantine/core'
+import Item from './Item';
 
 const Show = () => {
     const [itemData, setItemData] = useState()
-    
+
     // item id from the params
     const { id } = useParams();
 
@@ -24,9 +25,14 @@ const Show = () => {
         return <Loader />
     else
         return (
-            <div>
-                {itemData.name}
-            </div>
+            <Container
+                size="xs"
+                p="xl"
+            >
+                <Item
+                    item_data={itemData}
+                />
+            </Container>
         )
 }
 
