@@ -57,14 +57,6 @@ const links = [
         "label": "New"
     },
     {
-        "link": "/show",
-        "label": "Show"
-    },
-    {
-        "link": "/edit",
-        "label": "Edit "
-    },
-    {
         "link": "/destroy",
         "label": "Destroy "
     }
