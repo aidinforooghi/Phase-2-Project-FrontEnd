@@ -23,6 +23,12 @@ function App() {
     setData([...data, newItem])
   }
 
+  // removing the deleted item from the state
+  const removeItem = (itemId) => {
+    setData((oldState) =>
+      oldState.filter((o) => o.id !== itemId)
+    );
+  };
 
   useEffect(() => {
     //fetching all data upon rendering
@@ -44,7 +50,7 @@ function App() {
         <Route exact path="/new" element={<New addNewItem={addNewItem} />} />
         <Route exact path="/show" element={<div>/show component</div>} />
         <Route exact path="/edit" element={<div>/edit component</div>} />
-        <Route exact path="/destroy" element={<Destroy data={data} />} />
+        <Route exact path="/destroy" element={<Destroy data={data} removeItem={removeItem} />} />
       </Routes>
     </Container>
   );
