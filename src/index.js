@@ -7,6 +7,7 @@ import { MantineProvider } from '@mantine/core';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log("app rendered")
 root.render(
  
     <BrowserRouter>

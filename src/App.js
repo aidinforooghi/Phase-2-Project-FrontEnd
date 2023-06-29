@@ -10,10 +10,15 @@ function App() {
 
   //get all data
    function getAllData() {
+     console.log("fetch happened")
      fetch("http://localhost:3001/toys")
       .then(res => res.json())
       .then(data => setData(data))
   }
+
+  function addNewItem(newItem){
+    setData([...data, newItem]) 
+   }
 
   useEffect(() => {
     getAllData()
@@ -31,7 +36,7 @@ function App() {
       {/*  routes */}
       <Routes>
         <Route exact path="/" element={<Home data={data} setData={setData}/>} />
-        <Route exact path="/new" element={<New/> } />
+        <Route exact path="/new" element={<New addNewItem={addNewItem}/> } />
         <Route exact path="/show" element={<div>/show component</div>} />
         <Route exact path="/edit" element={<div>/edit component</div>} />
         <Route exact path="/destroy" element={<div>/destroy component</div>} />

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Flex, TextInput, NumberInput, Button } from '@mantine/core';
 
-const New = () => {
-
+const New = (props) => {
+const {addNewItem} = props
     const [name, setName] = useState('');
     const [image, setImage] = useState('')
     const [likes, setLikes] = useState(0);
@@ -22,7 +22,7 @@ const New = () => {
 
         fetch('http://localhost:3001/toys', configObj)
             .then(res => res.json())
-            .then(data =>console.log(data))
+            .then(data =>addNewItem(data))
            // .then(data => addMovie(data)) //THIS STATE UPDATE IS REQUIRED!!!
         // clear form
 
