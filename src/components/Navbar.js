@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState  , useEffect} from 'react';
 import {
     createStyles,
     Header,
     Container,
     rem,
 } from '@mantine/core';
+import { useNavigate , useLocation } from "react-router-dom";
 
 
 const HEADER_HEIGHT = rem(60);
@@ -48,7 +49,7 @@ const useStyles = createStyles((theme) => ({
 
 const links = [
     {
-        "link": "/index",
+        "link": "/",
         "label": "Index"
     },
     {
@@ -74,7 +75,9 @@ const links = [
 
 const Navbar = () => {
     const { classes, cx } = useStyles();
-    const [active, setActive] = useState(links[0].link);
+    const [active, setActive] = useState();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const items = links.map((link) => (
         <a
@@ -84,11 +87,20 @@ const Navbar = () => {
             onClick={(event) => {
                 event.preventDefault();
                 setActive(link.link);
+                navigate(`${link.link}`)  
             }}
         >
             {link.label}
         </a>
     ));
+
+    useEffect(() => {
+        //setting active link with current url
+        setActive(location.pathname)
+        return () => {   
+        }
+    }, [])
+    
     return (
         <Header
             height={HEADER_HEIGHT}
