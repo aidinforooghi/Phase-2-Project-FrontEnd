@@ -16,12 +16,12 @@ const Item = (props) => {
                     cursor:"pointer"
                 }
             }}
+            onClick={()=>navigate(`/show/${id}`)} 
         >
             <Image
                 src={image}
                 fit="contain"
                 alt={name}
-                onClick={()=>navigate(`/show/${id}`)} 
             />
             <Text
                 color="white"
