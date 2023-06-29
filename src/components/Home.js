@@ -17,7 +17,6 @@ const Home = (props) => {
                     item_data={d}
                 />
             })
-
             }
         </SimpleGrid>
     )
