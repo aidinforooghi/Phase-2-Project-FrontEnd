@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader, Container, Button, Flex, Box } from '@mantine/core'
+import { Loader, Container, Button, Flex, Box ,TextInput,NumberInput } from '@mantine/core'
 import Item from './Item';
 
 const Show = () => {
     const [itemData, setItemData] = useState()
     const [editOn, setEditOn] = useState(false)
+
+    const [name, setName] = useState('');
+    const [image, setImage] = useState('')
+    const [likes, setLikes] = useState(0);
 
     // item id from the params
     const { id } = useParams();
@@ -55,10 +59,44 @@ const Show = () => {
                         Edit
                     </Button>
                     {
-                        editOn && 
-                        <div>
-                            edit is on
-                        </div>
+                        editOn &&
+                        <Flex
+                            direction="column"
+                            align="start"
+                            gap="xl"
+                            m="xl"
+                        >
+                            <TextInput
+                                label="Name"
+                                placeholder="Change The Toy Name"
+                                w="70%"
+                                value={name}
+                                required
+                                onChange={(event) => setName(event.currentTarget.value)}
+                            />
+                            <TextInput
+                                label="Image"
+                                placeholder="Change The Image Link"
+                                w="70%"
+                                value={image}
+                                required
+                                onChange={(event) => setImage(event.currentTarget.value)}
+                            />
+                            <NumberInput
+                                label="Likes"
+                                placeholder="Change The Toy Likes"
+                                w="70%"
+                                value={likes}
+                                onChange={setLikes}
+                            />
+                            <Button
+                                w="40%"
+                                disabled={name === '' || image === ''}
+                              //  onClick={() => addNew()}
+                            >
+                                Save Changes
+                            </Button>
+                        </Flex>
                     }
                 </Flex>
             </Flex>
