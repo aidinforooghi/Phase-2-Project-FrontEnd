@@ -1,7 +1,10 @@
 import { Image, Stack, Text, Badge } from '@mantine/core';
+import { useNavigate } from 'react-router-dom'
 
 const Item = (props) => {
-    const { name, image, likes } = props.item_data
+    const { name, image, likes ,id} = props.item_data
+    let navigate = useNavigate();
+
     return (
         <Stack
             align="center"
@@ -13,6 +16,7 @@ const Item = (props) => {
                 src={image}
                 fit="contain"
                 alt={name}
+                onClick={()=>navigate(`/show/${id}`)}
             />
             <Text
                 color="white"
