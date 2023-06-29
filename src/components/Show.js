@@ -21,6 +21,19 @@ const Show = () => {
             .then(data => setItemData(data))
             .catch(error => alert(error)) // show alert incase of an error
     }
+
+    function clickEdit() {
+        if (editOn===true ){
+            setEditOn(false)
+        }
+        else {
+            setEditOn(true)
+            setName(itemData.name)
+            setImage(itemData.image)
+            setLikes(itemData.likes)
+        }
+        
+    }
     useEffect(() => {
         getItem(id)
 
@@ -48,12 +61,11 @@ const Show = () => {
                 <Flex
                     w="50%"
                     direction="column"
-
                 >
                     <Button
                         w="30%"
                         onClick={() => {
-                            setEditOn(!editOn)
+                            clickEdit()
                         }}
                     >
                         Edit
@@ -64,7 +76,6 @@ const Show = () => {
                             direction="column"
                             align="start"
                             gap="xl"
-                            m="xl"
                         >
                             <TextInput
                                 label="Name"
@@ -91,6 +102,7 @@ const Show = () => {
                             />
                             <Button
                                 w="40%"
+                                color="green"
                                 disabled={name === '' || image === ''}
                               //  onClick={() => addNew()}
                             >
