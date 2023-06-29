@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader, Container } from '@mantine/core'
+import { Loader, Container, Button, Flex, Box } from '@mantine/core'
 import Item from './Item';
 
 const Show = () => {
@@ -25,14 +25,27 @@ const Show = () => {
         return <Loader />
     else
         return (
-            <Container
-                size="xs"
-                p="xl"
+            <Flex
+                direction="row"
+                //  align="center"
+                //  justify="center"
+                gap="xl"
+                m="xl"
+                miw="100vw"
             >
-                <Item
-                    item_data={itemData}
-                />
-            </Container>
+                <Box
+                    w="50%"
+                >
+                    <Item
+                        item_data={itemData}
+                    />
+                </Box>
+                <Button
+                    w="50%"
+                >
+                    Edit
+                </Button>
+            </Flex>
         )
 }
 
