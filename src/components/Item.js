@@ -1,7 +1,7 @@
-import { Image, Stack ,Text} from '@mantine/core';
+import { Image, Stack, Text, Badge } from '@mantine/core';
 
 const Item = (props) => {
-    const { name, image } = props.item_data
+    const { name, image, likes } = props.item_data
     return (
         <Stack
             align="center"
@@ -22,6 +22,14 @@ const Item = (props) => {
             >
                 {name}
             </Text>
+            <Badge
+                color="teal"
+                variant="filled"
+                size="lg"
+                m="lg"
+            >
+                {likes}
+            </Badge>
         </Stack>
     )
 }
