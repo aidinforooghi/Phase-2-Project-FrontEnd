@@ -2,6 +2,24 @@ import { Flex, Group, CloseButton, Text } from '@mantine/core';
 
 const Destroy = (props) => {
     const { data } = props
+
+// delete item from the db, item id is passed to the function
+    function deleteItem(id) {
+
+        const configObj = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+
+        }
+
+        fetch(`http://localhost:3001/toys/${id}`, configObj)
+            .then(res => res.json())
+            .then(data => console.log(data))
+           // .then(data => addNewItem(data))
+          //  .then(clearStates())
+          .catch(error => alert(error)) // show alert incase of an error
+
+    }
     return (
         <Flex
             direction="column"
@@ -29,6 +47,7 @@ const Destroy = (props) => {
                         color="red"
                         size="xl"
                         iconSize={30}
+                        onClick={() => deleteItem(d.id)}
                     />
                 </Group>
             })
