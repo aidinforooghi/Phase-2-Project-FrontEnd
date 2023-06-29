@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Flex, TextInput } from '@mantine/core';
+import { Flex, TextInput , NumberInput } from '@mantine/core';
 
 const New = () => {
 
     const [value, setValue] = useState('');
+    const [nnn, setnnn] = useState(0);
 
     return (
         <form>
@@ -22,10 +23,17 @@ const New = () => {
                 />
                 <TextInput
                     label="Image"
-                    placeholder="Add Link To The Image"
+                    placeholder="Enter The Image Link"
                     w="70%"
                     value={value}
                     onChange={(event) => setValue(event.currentTarget.value)}
+                />
+                <NumberInput  
+                    label="Likes"
+                    placeholder="Enter The Toy Likes"
+                    w="70%"
+                    value={nnn } 
+                    onChange={setnnn} 
                 />
                 
             </Flex>
