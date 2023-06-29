@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { Loader, Container, Button, Flex, Box, TextInput, NumberInput } from '@mantine/core'
 import Item from './Item';
 
-const Show = () => {
+const Show = (props) => {
+    const {updateItemState} = props
+
     const [itemData, setItemData] = useState()
     const [editOn, setEditOn] = useState(false)
 
@@ -49,6 +51,7 @@ const Show = () => {
         }
         fetch(`http://localhost:3001/toys/${id}`, configObj)
             .then(res => res.json())
+            .then(data => updateItemState(data)) // update the item in the app state
             .then(setEditOn(false))
             .then(setUpdated(true)) // to trigger rerender to fetch updated item data
             .catch(error => alert(error)) // show alert incase of an error
