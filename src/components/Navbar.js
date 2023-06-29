@@ -99,7 +99,7 @@ const Navbar = () => {
         setActive(location.pathname)
         return () => {   
         }
-    }, [])
+    }, [active])
     
     return (
         <Header

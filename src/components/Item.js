@@ -11,12 +11,17 @@ const Item = (props) => {
             justify="space-between"
             spacing="sm"
             bg="gray.7"
+            sx={{
+                '&:hover': {
+                    cursor:"pointer"
+                }
+            }}
         >
             <Image
                 src={image}
                 fit="contain"
                 alt={name}
-                onClick={()=>navigate(`/show/${id}`)}
+                onClick={()=>navigate(`/show/${id}`)} 
             />
             <Text
                 color="white"
