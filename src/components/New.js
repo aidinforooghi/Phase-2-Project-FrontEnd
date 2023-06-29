@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Flex, TextInput, NumberInput, Button  , Space} from '@mantine/core';
+import { Flex, TextInput, NumberInput, Button } from '@mantine/core';
 
 const New = (props) => {
     const { addNewItem } = props
@@ -70,9 +70,6 @@ const New = (props) => {
             >
                 Add New
             </Button>
-            <Space
-            h={666}
-            />
         </Flex>
     )
 }

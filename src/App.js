@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home"
 import New from "./components/New"
 import Destroy from './components/Destroy';
+import Show from './components/Show';
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home data={data} setData={setData} />} />
         <Route exact path="/new" element={<New addNewItem={addNewItem} />} />
-        <Route exact path="/show" element={<div>/show component</div>} />
+        <Route exact path="/show/:id" element={<Show/> } />
         <Route exact path="/edit" element={<div>/edit component</div>} />
         <Route exact path="/destroy" element={<Destroy data={data} removeItem={removeItem} />} />
       </Routes>
