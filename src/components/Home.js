@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import { SimpleGrid } from '@mantine/core';
+import Item from './Item';
 
 const Home = () => {
-    const [movies, setMovies] = useState([])
+    const [data, setData] = useState([])
 
-    //get all movies
-    async function getAllMovies() {
+    //get all data
+    async function getAllData() {
         await fetch("http://localhost:3001/toys")
             .then(res => res.json())
-            .then(data => setMovies(data))
+            .then(data => setData(data))
     }
 
     useEffect(() => {
-        getAllMovies()
+        getAllData()
         return () => {
 
         }
@@ -23,10 +24,11 @@ const Home = () => {
             spacing="lg"
             m="xl"
         >
-            {movies.map((movie) => {
-                return <div key={movie.id}>
-                    {movie.name}
-                </div>
+            {data.map((d) => {
+                return <Item
+                    key={d.id}
+                    item_data={d}
+                />
             })
 
             }
