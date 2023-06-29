@@ -26,13 +26,29 @@ const Show = () => {
         if (editOn===true ){
             setEditOn(false)
         }
-        else {
+        else { // populate edit fields with item data
             setEditOn(true)
             setName(itemData.name)
             setImage(itemData.image)
             setLikes(itemData.likes)
         }
-        
+    }
+
+    // update item in the db
+    function updateItem() {
+        const configObj = {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ // request body from states
+                name: name,
+                image: image,
+                likes: likes,
+            })
+        }
+        fetch(`http://localhost:3001/toys/${id}`, configObj)
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => alert(error)) // show alert incase of an error
     }
     useEffect(() => {
         getItem(id)
@@ -45,8 +61,6 @@ const Show = () => {
         return (
             <Flex
                 direction="row"
-                //  align="center"
-                //  justify="center"
                 gap="xl"
                 m="xl"
                 miw="100vw"
@@ -71,7 +85,7 @@ const Show = () => {
                         Edit
                     </Button>
                     {
-                        editOn &&
+                        editOn && // shows when editOn is true
                         <Flex
                             direction="column"
                             align="start"
@@ -104,7 +118,7 @@ const Show = () => {
                                 w="40%"
                                 color="green"
                                 disabled={name === '' || image === ''}
-                              //  onClick={() => addNew()}
+                               onClick={() => updateItem()}
                             >
                                 Save Changes
                             </Button>
