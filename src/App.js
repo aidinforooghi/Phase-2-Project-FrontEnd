@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home"
 import New from "./components/New"
+import Destroy from './components/Destroy';
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
         <Route exact path="/new" element={<New addNewItem={addNewItem} />} />
         <Route exact path="/show" element={<div>/show component</div>} />
         <Route exact path="/edit" element={<div>/edit component</div>} />
-        <Route exact path="/destroy" element={<div>/destroy component</div>} />
+        <Route exact path="/destroy" element={<Destroy data={data} />} />
       </Routes>
     </Container>
   );
