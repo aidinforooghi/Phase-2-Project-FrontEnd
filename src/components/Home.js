@@ -1,23 +1,10 @@
-import { useState, useEffect } from 'react';
 import { SimpleGrid } from '@mantine/core';
 import Item from './Item';
 
-const Home = () => {
-    const [data, setData] = useState([])
+const Home = (props) => {
 
-    //get all data
-    async function getAllData() {
-        await fetch("http://localhost:3001/toys")
-            .then(res => res.json())
-            .then(data => setData(data))
-    }
+    const {data} = props
 
-    useEffect(() => {
-        getAllData()
-        return () => {
-
-        }
-    }, [])
     return (
         <SimpleGrid
             cols={4}
