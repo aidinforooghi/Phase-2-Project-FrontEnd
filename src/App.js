@@ -31,6 +31,15 @@ function App() {
     );
   };
 
+  // updating the edited item in the state 
+  function updateItem(item) {
+    let itemIndex = data.findIndex(d => d.id === item.id) // find item index
+    let updatedData = [...data] //put old state in a new variable 
+    updatedData[itemIndex] = item //update the item using its index
+    setData(updatedData) //setting the state with the new updated data
+  }
+
+
   useEffect(() => {
     //fetching all data upon rendering
     getAllData()
@@ -49,7 +58,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home data={data} setData={setData} />} />
         <Route exact path="/new" element={<New addNewItem={addNewItem} />} />
-        <Route exact path="/show/:id" element={<Show/> } />
+        <Route exact path="/show/:id" element={<Show />} />
         <Route exact path="/edit" element={<div>/edit component</div>} />
         <Route exact path="/destroy" element={<Destroy data={data} removeItem={removeItem} />} />
       </Routes>

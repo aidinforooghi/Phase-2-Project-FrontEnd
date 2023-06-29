@@ -49,7 +49,6 @@ const Show = () => {
         }
         fetch(`http://localhost:3001/toys/${id}`, configObj)
             .then(res => res.json())
-            // .then(data => setItemData(data))
             .then(setEditOn(false))
             .then(setUpdated(true)) // to trigger rerender to fetch updated item data
             .catch(error => alert(error)) // show alert incase of an error
