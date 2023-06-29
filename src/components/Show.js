@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader, Container, Button, Flex, Box ,TextInput,NumberInput } from '@mantine/core'
+import { Loader, Container, Button, Flex, Box, TextInput, NumberInput } from '@mantine/core'
 import Item from './Item';
 
 const Show = () => {
@@ -10,6 +10,8 @@ const Show = () => {
     const [name, setName] = useState('');
     const [image, setImage] = useState('')
     const [likes, setLikes] = useState(0);
+
+    const [updated, setUpdated] = useState(false)
 
     // item id from the params
     const { id } = useParams();
@@ -23,7 +25,7 @@ const Show = () => {
     }
 
     function clickEdit() {
-        if (editOn===true ){
+        if (editOn === true) {
             setEditOn(false)
         }
         else { // populate edit fields with item data
@@ -47,13 +49,15 @@ const Show = () => {
         }
         fetch(`http://localhost:3001/toys/${id}`, configObj)
             .then(res => res.json())
-            .then(data => console.log(data))
+            // .then(data => setItemData(data))
+            .then(setEditOn(false))
+            .then(setUpdated(true)) // to trigger rerender to fetch updated item data
             .catch(error => alert(error)) // show alert incase of an error
     }
     useEffect(() => {
         getItem(id)
-
-    }, [id]) //rerender when id changes
+        setUpdated(false)
+    }, [id, updated]) //rerender when id changes
 
     if (itemData === undefined)
         return <Loader />
@@ -118,7 +122,7 @@ const Show = () => {
                                 w="40%"
                                 color="green"
                                 disabled={name === '' || image === ''}
-                               onClick={() => updateItem()}
+                                onClick={() => updateItem()}
                             >
                                 Save Changes
                             </Button>
