@@ -9,8 +9,8 @@ function App() {
   const [data, setData] = useState([])
 
   //get all data
-  async function getAllData() {
-    await fetch("http://localhost:3001/toys")
+   function getAllData() {
+     fetch("http://localhost:3001/toys")
       .then(res => res.json())
       .then(data => setData(data))
   }
