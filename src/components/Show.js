@@ -5,6 +5,7 @@ import Item from './Item';
 
 const Show = () => {
     const [itemData, setItemData] = useState()
+    const [editOn, setEditOn] = useState(false)
 
     // item id from the params
     const { id } = useParams();
@@ -40,11 +41,26 @@ const Show = () => {
                         item_data={itemData}
                     />
                 </Box>
-                <Button
+                <Flex
                     w="50%"
+                    direction="column"
+
                 >
-                    Edit
-                </Button>
+                    <Button
+                        w="30%"
+                        onClick={() => {
+                            setEditOn(!editOn)
+                        }}
+                    >
+                        Edit
+                    </Button>
+                    {
+                        editOn && 
+                        <div>
+                            edit is on
+                        </div>
+                    }
+                </Flex>
             </Flex>
         )
 }
