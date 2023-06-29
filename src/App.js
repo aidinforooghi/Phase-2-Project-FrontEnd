@@ -4,6 +4,7 @@ import { Container } from '@mantine/core';
 import Navbar from './components/Navbar';
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home"
+import New from "./components/New"
 function App() {
   const [data, setData] = useState([])
 
@@ -30,7 +31,7 @@ function App() {
       {/*  routes */}
       <Routes>
         <Route exact path="/" element={<Home data={data} setData={setData}/>} />
-        <Route exact path="/new" element={<div>/new component</div>} />
+        <Route exact path="/new" element={<New/> } />
         <Route exact path="/show" element={<div>/show component</div>} />
         <Route exact path="/edit" element={<div>/edit component</div>} />
         <Route exact path="/destroy" element={<div>/destroy component</div>} />
