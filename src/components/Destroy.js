@@ -1,4 +1,4 @@
-import { Flex, Group, Text } from '@mantine/core';
+import { Flex, Group, CloseButton, Text } from '@mantine/core';
 
 const Destroy = (props) => {
     const { data } = props
@@ -25,7 +25,11 @@ const Destroy = (props) => {
                     >
                         {d.name}
                     </Text>
-                    
+                    <CloseButton
+                        color="red"
+                        size="xl"
+                        iconSize={30}
+                    />
                 </Group>
             })
             }
