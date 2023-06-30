@@ -13,7 +13,6 @@ function App() {
 
   //get all data
   function getAllData() {
-    console.log("fetch happened")
     fetch("http://localhost:3001/toys")
       .then(res => res.json())
       .then(data => setData(data))
@@ -59,7 +58,6 @@ function App() {
         <Route exact path="/" element={<Home data={data} setData={setData} />} />
         <Route exact path="/new" element={<New addNewItem={addNewItem} />} />
         <Route exact path="/show/:id" element={<Show updateItemState={updateItemState}/>} />
-        <Route exact path="/edit" element={<div>/edit component</div>} />
         <Route exact path="/destroy" element={<Destroy data={data} removeItem={removeItem} />} />
       </Routes>
     </Container>

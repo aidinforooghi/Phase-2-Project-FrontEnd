@@ -27,7 +27,7 @@ const New = (props) => {
         }
         fetch('http://localhost:3001/toys', configObj)
             .then(res => res.json())
-            .then(data => addNewItem(data))
+            .then(data => addNewItem(data)) //add the new item to the app state
             .then(clearStates())
             .catch(error => alert(error)) // show alert incase of an error
     }
