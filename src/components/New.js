@@ -25,7 +25,7 @@ const New = (props) => {
                 likes: likes,
             })
         }
-        fetch('http://localhost:3001/toys', configObj)
+        fetch(`${process.env.REACT_APP_API_URL}/toys`, configObj)
             .then(res => res.json())
             .then(data => addNewItem(data)) //add the new item to the app state
             .then(clearStates())

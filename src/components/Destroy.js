@@ -12,7 +12,7 @@ const Destroy = (props) => {
 
         }
 
-        fetch(`http://localhost:3001/toys/${id}`, configObj)
+        fetch(`${process.env.REACT_APP_API_URL}/toys/${id}`, configObj)
             .then(res => res.json())
             .then(removeItem(id))
             .catch(error => alert(error)) // show alert incase of an error

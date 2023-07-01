@@ -13,7 +13,7 @@ function App() {
 
   //get all data
   function getAllData() {
-    fetch("http://localhost:3001/toys")
+    fetch(`${process.env.REACT_APP_API_URL}/toys`)
       .then(res => res.json())
       .then(data => setData(data))
   }

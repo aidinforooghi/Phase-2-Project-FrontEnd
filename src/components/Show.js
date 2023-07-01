@@ -4,7 +4,7 @@ import { Loader, Container, Button, Flex, Box, TextInput, NumberInput } from '@m
 import Item from './Item';
 
 const Show = (props) => {
-    const {updateItemState} = props
+    const { updateItemState } = props
 
     const [itemData, setItemData] = useState()
     const [editOn, setEditOn] = useState(false)
@@ -20,7 +20,7 @@ const Show = (props) => {
 
     // get item data from db
     function getItem(id) {
-        fetch(`http://localhost:3001/toys/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/toys/${id}`)
             .then(res => res.json())
             .then(data => setItemData(data))
             .catch(error => alert(error)) // show alert incase of an error
@@ -49,17 +49,19 @@ const Show = (props) => {
                 likes: likes,
             })
         }
-        fetch(`http://localhost:3001/toys/${id}`, configObj)
+        fetch(`${process.env.REACT_APP_API_URL}/toys/${id}`, configObj)
             .then(res => res.json())
-            .then(data => updateItemState(data)) // update the item in the app state
+            .then(data => {
+                updateItemState(data)// update the item in the app state
+                setItemData(data) // update the item in the this component state
+            }) 
             .then(setEditOn(false))
-            .then(setUpdated(true)) // to trigger rerender to fetch updated item data
             .catch(error => alert(error)) // show alert incase of an error
     }
     useEffect(() => {
         getItem(id)
-        setUpdated(false)
-    }, [id, updated]) //rerender when id changes
+        // setUpdated(false)
+    }, [id]) //rerender when id changes
 
     if (itemData === undefined)
         return <Loader />
