@@ -37,4 +37,4 @@ If you'd like to contribute to the React Movie App, follow these steps:
 5. Create a pull request to the main repository.
 
 ## License
-The React Movie App is open-source software released under the [MIT License](LICENSE).
+The React Movie App is open-source software released under the [MIT License](https://choosealicense.com/licenses/mit/).
