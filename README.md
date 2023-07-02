@@ -1,4 +1,5 @@
 # React Toys App
+A single-page application built with React, HTML, CSS, and JavaScript. This project incorporates client-side routing, utilizes the Mantine UI library for styling, and interacts with a RESTful API to manage movies.
 
 ## Description
 The React Toys App is a single-page application built using React. It allows users to view, add, edit, and delete toys. The app incorporates client-side routing and retrieves data from a RESTful API. Users can navigate between different routes to perform various actions on toys.
