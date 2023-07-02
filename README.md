@@ -4,6 +4,12 @@ A single-page application built with React, HTML, CSS, and JavaScript. This proj
 ## Description
 The React Toys App is a single-page application built using React. It allows users to view, add, edit, and delete toys. The app incorporates client-side routing and retrieves data from a RESTful API. Users can navigate between different routes to perform various actions on toys.
 
+## Demo
+You can see a live demo of the React Toys App website [here](https://bucolic-halva-262bf2.netlify.app/).
+
+## Demo Video
+You can see non-technical walkthrough of React Toys App in browser [here](https://www.loom.com/share/21913c88c1e948b2929ff7791b6b3f56).
+
 ## Installation Instructions
 ### Backend
 1. Clone the backend repository: `git clone https://github.com/aidinforooghi/phase-2-project-backend`
